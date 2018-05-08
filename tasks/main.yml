@@ -1,0 +1,24 @@
+---
+  - name: ensure important groups exist
+    group:
+      name: "{{ item }}"
+      system: yes
+      state: present
+    with_items:
+      - docker
+      - ssh_login
+      - sudo
+
+  - name: ensure system user exists
+    user:
+      name: "{{ system_user_username }}"
+      generate_ssh_key: yes # generate default id_rsa
+      password: "{{ system_user_password|password_hash('sha512') }}"
+      groups: "ssh_login,sudo,docker"
+      update_password: on_create
+
+  - name: ensure user can use sudo without password
+    lineinfile:
+      dest: /etc/sudoers
+      line: "{{ system_user_username }} ALL= NOPASSWD: ALL"
+

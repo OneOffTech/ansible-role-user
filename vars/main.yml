@@ -1,0 +1,8 @@
+---
+
+keepass_base_key: "ansible/hosts/{{ ansible_hostname }}"
+keepass_key_user: "{{ keepass_base_key }}.username"
+keepass_key_pass: "{{ keepass_base_key }}.password"
+
+system_user_username: "{{ lookup('keepass',keepass_key_user) }}"
+system_user_password: "{{ lookup('keepass',keepass_key_pass) }}"
