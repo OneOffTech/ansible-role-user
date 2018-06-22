@@ -1,18 +1,23 @@
-## User creation
+User
+=========
 
-* This role creates the user `user` on a system.
-* This user will be added to the groups: `docker`, `ssh_login` and `sudo`
-* The password will be set accordingly to the provided information from a simple, encrypted KeePass database.
+This roles creates the user `user` on a Debian (based) system. Used for the [provision](https://github.com/oneofftech/provision) setup. The account has direct super user access (through sudo) and it optionally gets password information from a simple, encryped [KeePass databse](https://keepass.info/).
 
-#### You can connect directly with
+This is work in progress and it is prefered to collaborate on it. Please communicate over the issue queue. Every pull request is highly appreciated.
 
-`ssh -p 2222 user@123.456.789.1`
+Example Playbook
+----------------
 
-or use an alias in your `.ssh/config` (recommended):
+    - hosts: servers
+      roles:
+         - { role: xamanu.essentials }
 
-```
-Host asososca
-  Port 2222
-  User  user
-  Hostname 123.456.789.1
-```
+License
+-------
+
+MIT
+
+Author Information
+------------------
+
+Felix Delattre - https://felix.delattre.de
