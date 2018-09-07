@@ -15,7 +15,15 @@
       generate_ssh_key: yes # generate default id_rsa
       password: "{{ system_user_password|password_hash('sha512') }}"
       groups: "ssh_login,sudo,docker"
+      shell: "/bin/bash"
       update_password: on_create
+
+  - name: install trusted public keys
+    authorized_key:
+       user: "{{ system_user_username }}"
+       state: present
+       key: "{{ item }}"
+    with_items: "{{ system_user_authorized_keys }}"
 
   - name: ensure user can use sudo without password
     lineinfile:

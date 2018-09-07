@@ -1,2 +1,5 @@
 ---
 # defaults file for ansible-role-user
+
+# array of SSH keys authorized to access the host.
+system_user_authorized_keys: []
