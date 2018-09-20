@@ -1,7 +1,6 @@
 galaxy_info:
   author: Felix Delattre
   description: A standard `user` for Debian systems.
-  company:
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
